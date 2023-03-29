@@ -1,15 +1,14 @@
-1a. Do both terminals show the same information? Explain the reason?
-    READ COMMITTED 
-    	Both tables do not show the same information, because the terminal 1 will only read 
-    	changes from the table when it is committed as it is set to "Read committed" currently.
-    	
-    REPEATABLE READ 
-    	Both tables do not show the same information, because "repeatable read" is similar to "read committed". 
-    	It will only read data from account table that has been committed and won't change. 
-    	
-    
-1b. After committing the changes, the result of both sessions become the same in "Read Committed", but they still differ for "Repeatable Read". The same goes for the balance update. 
+1a. Is the information displayed the same on both terminals? Please explain why or why not.
 
-2a. In the Read committed isolation level, T1 reads the accounts with group_id=2 twice, and the results differ because T2 updated the group_id of Bob. However, T1's updates do not conflict with T2's updates, so both transactions can be committed successfully.
+In the "Read Committed" isolation level, the information displayed on both terminals is not the same because Terminal 1 only reads changes from the table when they are committed. On the other hand, in the "Repeatable Read" isolation level, the information displayed on both terminals is also not the same as it only reads data from the account table that has been committed and won't change.
 
-2b. In the Repeatable read isolation level, T1 reads the accounts with group_id=2 twice, but the results are the same because the Repeatable read isolation level guarantees that the read results will not change during the transaction. T1's updates do not conflict with T2's updates, so both transactions can be committed successfully.
+1b. Once changes have been committed, the results will be the same for both sessions in the "Read Committed" isolation level. However, in the "Repeatable Read" isolation level, the results will still differ even after changes have been committed. The same applies to balance updates.
+
+2a. During the "Read Committed" isolation level, T1 reads the accounts with group_id=2 twice, and the results differ because T2 updated Bob's group_id. However, T1's updates do not conflict with T2's updates, so both transactions can be committed successfully.
+
+2b. In the "Repeatable Read" isolation level, T1 reads the accounts with group_id=2 twice, and the results are the same as the "Repeatable Read" isolation level guarantees that the read results will not change during the transaction. T1's updates do not conflict with T2's updates, so both transactions can be committed successfully.
+
+
+
+
+
