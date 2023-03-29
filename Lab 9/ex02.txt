@@ -1,0 +1,15 @@
+1a. Do both terminals show the same information? Explain the reason?
+    READ COMMITTED 
+    	Both tables do not show the same information, because the terminal 1 will only read 
+    	changes from the table when it is committed as it is set to "Read committed" currently.
+    	
+    REPEATABLE READ 
+    	Both tables do not show the same information, because "repeatable read" is similar to "read committed". 
+    	It will only read data from account table that has been committed and won't change. 
+    	
+    
+1b. After committing the changes, the result of both sessions become the same in "Read Committed", but they still differ for "Repeatable Read". The same goes for the balance update. 
+
+2a. In the Read committed isolation level, T1 reads the accounts with group_id=2 twice, and the results differ because T2 updated the group_id of Bob. However, T1's updates do not conflict with T2's updates, so both transactions can be committed successfully.
+
+2b. In the Repeatable read isolation level, T1 reads the accounts with group_id=2 twice, but the results are the same because the Repeatable read isolation level guarantees that the read results will not change during the transaction. T1's updates do not conflict with T2's updates, so both transactions can be committed successfully.
